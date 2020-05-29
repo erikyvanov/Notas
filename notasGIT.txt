@@ -1,0 +1,178 @@
+﻿git config -l                  - - - - - - Ver configuraciones de git
+git config --global user.name "name"   - Cambiar nombre
+git config --global user.email "email"   - Cambiar email
+
+//Ignorar archivos y carpetas
+Se crea un archivo llamado .gitignore el cual va a conetener los archivos y carpetas que git va a ignorar
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+//Crear un alias para un comando
+alias <nombre>="comando"
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+git commit -m "Mensaje"
+	git commit -am "Mensaje"
+
+git rm --cached  <archivo> - - - - - - - - - Borrar de git un archivo, anti add 
+
+git status                 - - - - - - - - - Ver el estado de mis archivos
+
+git log                    - - - - - - - - - Ver la historia de mis archivos
+	git log --all --graph --decorate --oneline - - - Ver el log de una manera grafica 
+          
+git show <archivo>         - - - - - - - - - Ver que se modifico en un archivo
+
+git diff <commit> <commit> - - - - - - - - - Compara 2 commits
+      
+git checkout:
+	git checkout <Codigo de cambio> - - - - - - - - Regresa a ese cambio
+	git checkout <Codigo de cambio> <archivo> - - - Regresa a ese cambio del archivo seleccionado
+	git checkout master - - - - - - - - - - - - - - Regresa al HEAD
+	git checkout master <archivo> - - - - - - - - - Regresa al HEAD en el archivo seleccionado
+
+	git checkout <Rama> - - - - - - - - - - - - - - Cambia a la rama seleccionada 
+
+git branch <nombreDeLaRama> - - - - - - - - - Crea una nueva rama
+
+git reset:
+	git reset --soft ------------------------ Regresa al commit anterior y no borra los cambios en staging
+	git reset --hard ------------------------ Regresa al commit anterior y BORRA los cambios en staging	
+
+//Fusionar cambios entre ramas
+#Cabe aclarar que se tiene que hacer el merge en la rama master, el merge es un commit 
+git merge <Rama a fusionar>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Traer un reposititorio remoto
+HTTPS:
+	git remote add origin master <url del repositorio que queremos traer>
+	Siempre hay que traer las cosas del repositorio remoto con:
+		git pull origin master
+
+	forzar mergue
+		git pull origin master --allow-unrelated-histories 
+	Y por ultimo mandamos las cosas con git push origin master
+
+-------------------------------------------------------------------------------------------------- 
+//Repositorios Remotos
+git fetch origin master  - - - - - - Traer cosas?
+
+git push origin master   - - - - - - Mandar cosas 
+git pull origin master   - - - - - - Traer cosas
+	//Forzar fusion de ramas con el repositorio remoto
+	git pull origin master --allow-unrelated-histories
+
+#Por HTTPS
+	git remote add origin <direccionHTTPS>
+
+	git remote -v - - - - - - - - - - - - - - - - - - - Nos muestra el origin
+
+#Por SSH
+	//Crear llave es SSH
+	ssh-keygen -t rsa -b 4096 -C "erik.ivanov.n@gmail.com"
+
+	//Revisar si las llaves estan corriendo
+	eval $(ssh-agent -s)
+
+	//Agregar la llave al SO
+	ssh-add <Ruta de la llave privada> - - - - - - ssh-add ~/.ssh/id_rsa
+
+	git remote -v  - - - - - - - - - - - - - - - - Ver las URLS
+	git remote set-url origin <link SSH> - - - - - Cambiar links
+
+git remote add <nombre> <link>
+
+origin ----- Repositorio propio
+upstream --- Repositorio de alguien mas
+
+ - - - - - - - - - -  - - - - - - -  - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - 
+TAGS
+Crear un nuevo tag y asignarlo a un commit: 
+	git tag -a "nombre-del-tag" id-del-commit
+Borrar un tag en el repositorio local:
+	git tag -d nombre-del-tag
+Listar los tags de nuestro repositorio local:
+	git tag o git show-refs --tags
+
+
+Publicar un tag en el repositorio remoto:
+	git push origin --tags
+Borrar un tag del repositorio remoto:
+	git tag -d nombre-del-tag
+	git push origin :refs/tags/nombre-del-tag
+
+ - - - - - - - - - -  - - - - - - -  - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - 
+//programa visual de ramas 
+gitk
+
+- - - - - - - - - -  - - - - - - -  - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - 
+//Ramas en github
+
+Puedes trabajar con ramas que nunca envias a GitHub, as� como pueden haber ramas importantes en
+GitHub que nunca usas en el repositorio local.
+Lo importantes que aprendas a manejarlas para trabajar profesionalmente.
+
+Crear una rama en el repositorio local:
+git branch nombre-de-la-rama o git checkout -b nombre-de-la-rama.
+Publicar una rama local al repositorio remoto: git push origin nombre-de-la-rama.
+Recuerda que podemos ver graficamente nuestro entorno y flujo de trabajo local con Git usando el comando gitk.
+
+borrar una rama
+git branch -D <rama>
+
+- - - - - - - - - -  - - - - - - -  - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - 
+//Clonar un repositorio publico
+
+git clone <Link HTTPS>
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Git Stash: Guardar cambios en memoria y recuperarlos después
+
+git stash - - - - - - - - - - - - - - - - - - - - - - Guarda los cambios sin hacer un commit y te regresa al HEAD
+git stash pop - - - - - - - - - - - - - - - - - - - - Muestra los cambios guardados en stash
+
+git stash branch <rama> - - - - - - - - - - - - - - - - - - - Manda los eel contenido de stash a otra rama 
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Borrar archivos que no estan siendo trackeadas
+
+git clean --dry-run - - - - - - - - - - - Ver cosas que se van a borrar
+git clean -f - - - - - - - - - - - -- - - Borra los archivos
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Git cherry-pick: Traer commits viejos al head de un branch
+
+git cherry-pick <IDCommit> - - - - - - - - Traer un commit viejo de otra rama
+
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Reconstruír commits en Git con amend
+Si te equivocas y haces un commit antes de tiempo puedes arreglarlo:
+	Primero haces el cambio y lo añades con git add <>
+
+git commit --amend - - - - - - - - - - - -- - - - - Te pega los cambios de add al ultimo commit
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Git Reset y Reflog: Úsese en caso de emergencia
+
+git reflog - - - - - - - - Va un paso mas alla del log, se ve todo hasta las ramas borradas
+git reset <hash> --hard - - - - - - - Vuelves al HEAD que quieras y borras todo
+git reset <hash> --soft - - - - - - - Vuelves al HEAD que quieras y borras todo menos lo que tengas en add
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Buscar en archivos y commits de Git con Grep y log
+
+git grep -n <palabra puedes que este entre comillas> - - - - - te dice en que lineas usaste esa palabra
+	 -c <palabra> - - - - - te dice el numero de veces que usaste la palabra
+git log -S "palabra" - - - - - - Te muestera las veces que has uasdo esa palabra en un log
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+git shortlog -sn --all --no-merges - - - Te dice cuantos commits hicieron todos los colaboradores
+
+git blame <archivo> - - - - - - - - - -  Te dice que ha hecho cada persona
+git blame <archivo> -L(LineaInicial),(LineaFinal) - - - - - - - - - - Te dice quien hizo cambios en un rango de lineas
+
+git branch -r - - - - - - - - Te meustra las ramas remotas
+git branch -a - - - - - - - - Te muestra todas las ramas tanto locales como remotas
+
+
+

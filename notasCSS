@@ -1,0 +1,27 @@
+		Css
+		
+Flexbox
+	display: flex; //Declaracion de flexbox
+	
+	// Si quieres ponerlos en columna o en fila
+	flex-direction: row || column;
+	
+	flex-wrap: no-wrap; //Los elementos abarcan toda la linea o columna
+		   wrap;    // Los elemntos se posicionan respentando su ancho
+		   
+	//Atajo para flex-direction y flex-grap
+	flex-flow: row || column, wrap || no-wrap;
+	
+	// Acomodar elementos en horizantal
+	justify-content: (valor);
+	
+	// Acomodar elementos en vertical
+	aling-items: (valor);
+	//Acomodar verticalmente el cojunto de contenidos, se usa cuando hay varias filas (wrap)
+	aling-content: (valor);	
+		//Deben ir juntos
+		flex-wrap: wrap; y aling-content: (valor);
+	
+	baseline hace que la caja se ajuste al tamaño de los hijos
+	
+	
