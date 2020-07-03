@@ -1,0 +1,24 @@
+	| Hooks |
+	
+memo
+El memo sirve para que componente nose dispare si los props no cambian
+
+ejemplo
+
+import React from 'react'
+
+export const Component = React.memo((props) => {//});
+
+	useMemo
+Momoriza un resultado
+
+const res = useMemo(() => funcionQueRegresaUnResultado(i), [i]) // Recibe un arreglo de dependencias
+
+	useCallback
+Memoriza una funcion
+
+Se usa cuando un componente hijo recibe una funcion
+
+const f = useCallback( () => {
+	functionMemorizada()
+}, [functionMemorizada])

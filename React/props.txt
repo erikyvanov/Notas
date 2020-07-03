@@ -1,0 +1,16 @@
+	| PropTypes |
+	
+Son para indicar que un componente necesita props obligatorias
+snipet para importar rapido:
+	impt
+
+import PropTypes from 'prop-types'
+
+// Componenete 
+
+Componente.propTypes = {
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+};
+
+

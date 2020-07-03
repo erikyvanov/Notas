@@ -1,0 +1,101 @@
+	| TESTING |
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -	
+Configurar Enzyme 
+
+instalar enzyme
+	npm i --save-dev enzyme enzyme-adapter-react-16
+	
+	hacer las importaciones en el archivo setupTests.js
+	
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
+
+	
+instalar enzyme to json
+	npm install --save-dev enzyme-to-json
+	
+	hacer las importaciones en el archivo setupTests.js
+	
+import {createSerializer} from 'enzyme-to-json';
+ 
+expect.addSnapshotSerializer(createSerializer({mode: 'deep'}));
+
+	Todo junto en setupTests.js
+	
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import { createSerializer } from 'enzyme-to-json';
+
+Enzyme.configure({ adapter: new Adapter() });
+
+expect.addSnapshotSerializer(createSerializer({ mode: 'deep' 
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Hacer pruebas.
+Para iniciar las pruebas hay que crear otro directorio src llamado tests
+Crear directorio para hacer tests de componentes 
+
+yarn test
+npm test
+
+Todas las pruebas deben estar contenidas en un describe para decir de que van.
+
+describe('Pruebas en <lo que sea>', () => {
+    // Funciones de pruebas
+    // test('', () => {})...
+})
+
+Crear tests
+test('nombre', () => {
+	expect() // Genera la prueba
+})
+
+hacer un snapshot de un componente:
+
+test('Debe mostrar el componente correctamnete', () => {
+    const wrapper = shallow(<GifGridItem />);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+  
+- - Para actualizar el snapshot presinar 'u' en la consola de test - -
+
+	Extrater elementos del componente 
+usar un wrapper 
+const wrapper = shallow(<GifGridItem />);
+
+const p = wrapper.find('elemento')
+
+	.find('e').at() // at es el indice
+
+.trim() // Quita los espacios en un texto
+
+	Extarer texto
+const text = p.text()
+
+	Extraer props
+const props = e.props() // Regresa un objeto con las props
+// Extarer solo un prop
+const alt = e.prop('alt')
+
+	Ver si incluye una clase
+const div = wrapper.find('div');
+const { className } = div.props();
+
+expect(className.includes('animate__fadeIn')).toBe(true);
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Simulaciones 
+
+simular input
+const input = wrapper.find('input');
+value = 'hola';
+
+input.simulate('change', { target: { value } })
+
+
+
+
