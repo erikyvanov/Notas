@@ -1,0 +1,32 @@
+// Usar Hook para sacar el history
+
+
+import {useHistory} from 'react-router-dom'
+const history = useHistory();
+
+
+// Crear ruta privada 
+
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import { Route, Redirect } from 'react-router-dom';
+
+export const PrivateRoute = ({ isAuth, component: Component, ...rest }) => {
+	return (
+		<Route
+			{...rest}
+			component={(props) =>
+				isAuth === true ? <Component {...props} /> : <Redirect to="/login" />
+			}
+		/>
+	);
+};
+
+PrivateRoute.propTypes = {
+	isAuth: PropTypes.bool.isRequired,
+	component: PropTypes.func.isRequired,
+};
+
+
+nota: para hacer la ruta publica solo se cambia el Redirect y el isAuth

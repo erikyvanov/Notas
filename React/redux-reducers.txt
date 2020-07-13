@@ -1,0 +1,74 @@
+
+// Es para pasar valores facilmente en el arbol de componenetes
+Mandar a llamar useContext
+
+imoport {XContext} from '../contexts'
+const {dispatch,  state} = useContext(XContext)
+
+Guardar cosas en el localStorage
+Se hace un useEffect cada que la propiedad a guaradar cambie
+
+	localStorage.setItem('user', JSON.stringify(user));
+	
+		| Reducers |
+		
+// Crear reducer
+- requiere un archivo de types
+
+import { types } from '../types/types';
+
+export const authReducer = (state = {}, action) => {
+	switch (action.type) {
+		case types.login:
+			return {
+				uid: action.payload.uid,
+				name: action.payload.displayName,
+			};
+		case types.logout:
+			return {};
+		default:
+			return state;
+	}
+};
+
+	
+		| Redux |
+Instalar react redux
+yarn add react-redux redux
+
+- Crear el reducer
+- Crear una carpeta llamada store en src
+ archivo store.js dentro de src/store/store.js
+ 
+ import { createStore, combineReducers } from 'redux';
+
+// Reducers
+import { authReducer } from '../reducers/authReducer';
+
+// Es para usar varios reducers
+const reducers = combineReducers({
+	auth: authReducer,
+});
+
+// Crea el store
+export const store = createStore(reducers, herramientasDev);
+
+- ir a un punto alto de la aplicacion y meter el Provider de redux e importar el store
+
+import React from 'react';
+import { Provider } from 'react-redux';
+
+import { AppRouter } from './routers/AppRouter';
+import { store } from './store/store';
+
+export const JournalApp = () => {
+	return (
+		<Provider store={store}>
+			<AppRouter />
+		</Provider>
+	);
+};
+
+
+
+

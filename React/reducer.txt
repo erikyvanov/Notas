@@ -1,0 +1,11 @@
+			| Usar Reducers |
+
+// Se tiene que importar el reducer
+import { authReducer } from './auth/authReducer';	
+
+// La funcion init es para regresar un estado inicial del reducer
+const init = () =>
+	JSON.parse(localStorage.getItem('user')) || { logget: false };
+	
+// [state, dispatch // o setState] = useReducer(reducerAUsar, estado inicial, init)	
+const [user, dispatch] = useReducer(authReducer, {}, init);
