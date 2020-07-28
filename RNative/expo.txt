@@ -1,0 +1,12 @@
+expo tiene constantes para hacer la app responsive en cualquer telefoto
+Se agrega con estilos
+
+// Importar expo
+import {} from 'expo' 
+
+Constants
+
+paddingTop: Constants.statusBarHeight --- se adata a la altura de cualquier
+dispositivo
+
+

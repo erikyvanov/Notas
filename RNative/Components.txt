@@ -1,0 +1,7 @@
+En React native no se usan las etiquetas html
+
+<View /> ----------  <div />
+<Text /> ----------  <p /> <span />
+<Button /> -------- <Button />
+
+<Switch value={} onValueChange={} /> --- es in switch

@@ -1,0 +1,136 @@
+man <nombre> - - - - - - - Dice la informacion de un comando
+
+	Organizar archivos
+Listar archivos
+ls
+
+Listar archivos ocultos:
+ls -a
+
+Identificar el directorio:
+pwd
+
+Cambiar de directorio:
+cd
+
+Crear un directorio:
+mkdir
+
+Copiar un archivo:
+cp
+
+Borrar un archivo:
+rm
+
+Mover un archivo:
+mv <archivo> <nueva ruta>
+
+Borrar un directorio:
+rmdir
+
+
+	Redireccionar entrdas y salidas
+<comando> < <archivo de instrucciones>
+<comando> > <archivo para guardar las instrucciones>
+
+<comando> >> <archivo para guardar las instrucciones> -- agrgregar
+
+| - - - - - comunicar procesos, pasa como argumentod la salida de un proceso
+<c> | <c>
+
+& - - -  lanza proceso en segundo plano
+
+	Ver procesos
+ps - - - - Los procesos que estan
+ps ax - - Ver procesos del sistema
+
+Ambos devuelven un identificador
+
+top - - - procesos interactivos
+
+Matar procesos 
+kill -9 <identifiacdor que da ps o top>
+killall <nombre>
+
+	Permisos y archivos 
+ls -l 
+Muestra en la columna derecha los permisos
+Se dividen en el 3: Propietario, Grupo, Otros
+
+Tipos de permisos
+r - lectura
+w - escritura
+x - ejecucion
+
+
+Cambiar permisos
+
+chmod --- cambia los permisos 
+
+se pueden cambiar los permisos en una sola operacion con un numero binario
+
+	Comprimir archivos
+.gz
+gzip <archivo>
+gzip -d <arhivo> -- descomprime
+
+ls <archivo> -lh -- ver tamano del archivo
+
+empaquetar archivos
+.tar
+
+tar cf <nombre.tar> <archivos, carpeta/*> -- empaqueta los archivos en un .tar
+tar tf <paquete> --- ver contenido
+
+tar xf <paquete> desenpaquetar
+
+	Emapuetar y comprimir
+tar czf <nomvre.tgz> <archivos, carpeta/*> -- comprimir y empaquetar
+tar xzf <.tar.gz>
+
+	Buscar archivos
+locate <nombre del archivo> --- tiene que tener una base de datos
+sudo updatedb -- actualiza la base de datos de locate
+
+find . -user <nombre> -perms <numero de permiso>
+
+
+	HTTP
+
+curl --- hacer pedidios
+wget -- realiza descargas
+
+curl <direccion http>
+wget <direccion http>
+
+
+	Variables de entorno
+Es para que el sistema operativo tengo acceso a ciertas cosas
+
+export <nombre=<contenido> crea una variabale de entrorno
+
+	Automatizacion de tareas
+Se guardan como:
+	script.sh
+
+#/bin/bash --- interprete
+// Comandos
+
+	Programar tareas
+at
+cron
+
+at no + <tiempo>
+despues pide el comando
+y ctr + d para salir
+
+ex
+
+utilidad interactiva
+		
+awk
+	
+flujos estandar
+	entrada, salida, error
+
+
