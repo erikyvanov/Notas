@@ -1,2 +1,2 @@
 # Notas
-Notas en txt
+Notas en txt y .md
