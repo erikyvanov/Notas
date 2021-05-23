@@ -35,9 +35,19 @@ message Person {
   }
 ```
 
-
+Compilar protobuffers
 
 ```bash
 protoc -I=. --go_out=./ ./archivo.proto
+```
+
+```bash
+protoc -I=$SRC_DIR --go_out=$SRC_DIR  $SRC_DIR/hello.proto
+```
+
+Compilar servidor gRPC
+
+```bash
+protoc --go_out=$SRC_DIR --go_opt=paths=source_relative --go-grpc_out=$SRC_DIR --go-grpc_opt=paths=source_relative proto/hello.proto
 ```
 
